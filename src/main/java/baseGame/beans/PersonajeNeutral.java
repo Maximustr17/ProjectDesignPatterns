@@ -10,7 +10,8 @@ public class PersonajeNeutral implements ICharacter {
 	private int vidaBase;
 	private int vidaMaxima;
 	private int ataqueBase;
-
+	private boolean isColissionable;
+	
 	public PersonajeNeutral() {
 
 	}
@@ -65,5 +66,11 @@ public class PersonajeNeutral implements ICharacter {
 		return "Aqu� el flow sube al m�ximo y te curas";
 
 	}
+	public Boolean IsColisionable() {
+		return isColissionable;
+	}
 
+	public void setColissionable(boolean isColissionable) {
+		this.isColissionable = isColissionable;
+	}
 }

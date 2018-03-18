@@ -4,82 +4,80 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
+import baseGame.Biz.TheGame;
+
 public class TheGameUI {
-	
-	 static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-	 static PrintStream out = System.out;
-	
-	 public static void main(String[] args) throws java.io.IOException {
-		 
-	        int opc;
-	        boolean noSalir = true;
 
-	        do {
-	            mostrarMenu();
-	            opc = leerOpcion();
-	            noSalir = ejecutarAccion(opc);
-	        } while (opc != 4);
+	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+	static PrintStream out = System.out;
 
-	    }
+	public static void main(String[] args) throws java.io.IOException {
 
-	   
-	    public static void mostrarMenu() throws java.io.IOException {
-	        
-	        out.println();
-	        out.println("MENÚ PRINCIPAL");
-	        out.println();
+		int opc;
+		boolean noSalir = true;
 
-	        out.println("1-Iniciar partida");
+		do {
+			mostrarMenu();
+			opc = leerOpcion();
+			noSalir = ejecutarAccion(opc);
+		} while (opc != 4);
 
-	        out.println("2- ");
+	}
 
-	        out.println("3- ");
+	public static void mostrarMenu() throws java.io.IOException {
 
-	        out.println("4-Salir del juego ");
+		out.println();
+		out.println("MENÚ PRINCIPAL");
+		out.println();
 
-	        out.println();
-	    }
+		out.println("1-Iniciar partida");
 
-	 
-	    public static int leerOpcion() throws java.io.IOException {
+		out.println("2- ");
 
-	        int opc;
+		out.println("3- ");
 
-	        out.println("Seleccione una opción:");
-	        opc = Integer.parseInt(in.readLine());
-	        out.println();
+		out.println("4-Salir del juego ");
 
-	        return opc;
+		out.println();
+	}
 
-	    }
+	public static int leerOpcion() throws java.io.IOException {
 
-	  
-	    public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
+		int opc;
 
-	        boolean noSalir = true;
+		out.println("Seleccione una opción:");
+		opc = Integer.parseInt(in.readLine());
+		out.println();
 
-	        switch (popcion) {
+		return opc;
 
-	            case 1:
-	            
-	                break;
+	}
 
-	            case 2:
-	                
-	                break;
+	public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
 
-	            case 3:
-	               
-	                break;
+		boolean noSalir = true;
 
-	            case 4:
+		switch (popcion) {
 
-	                noSalir = false;
+		case 1:
+			TheGame a = new TheGame(1);
+			break;
 
-	                break;
-	        }
-	        return noSalir;
-	    }
+		case 2:
 
+			break;
+
+		case 3:
+
+			break;
+
+		case 4:
+
+			noSalir = false;
+
+			break;
+		}
+		return noSalir;
+	}
 
 }

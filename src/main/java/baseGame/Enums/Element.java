@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum Element {
-	Hospital("H"), Ground("0"), Wall("X"), PersonajeNeutral("N"), PersonajeEnemigo("E");
+	Hospital("H"), Ground("0"), Wall("X"), PersonajeNeutral("N"), PersonajeEnemigo("E"), PersonajePrincipal("U");
 
 	private static Map<String, Element> map = new HashMap<String, Element>();
 

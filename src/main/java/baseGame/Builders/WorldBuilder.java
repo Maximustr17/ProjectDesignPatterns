@@ -7,6 +7,7 @@ import baseGame.Helpers.FileHelper;
 import baseGame.Helpers.Serializer;
 import baseGame.beans.Ground;
 import baseGame.beans.Hospital;
+import baseGame.beans.PersonajeHeroe;
 import baseGame.beans.Wall;
 import baseGame.interfaces.IElement;
 
@@ -33,6 +34,8 @@ public class WorldBuilder {
 			return new Ground();
 		case Hospital:
 			return new Hospital();
+		case PersonajePrincipal:
+			return new PersonajeHeroe();
 		default:
 			return null;
 		}
