@@ -1,19 +1,20 @@
 package baseGame.beans;
 
+import baseGame.Enums.Element;
 import baseGame.interfaces.ICharacter;
 
 public class PersonajeNeutral implements ICharacter {
-	
+
 	private boolean estoyVivo;
 	private int nivel;
 	private int vidaBase;
 	private int vidaMaxima;
 	private int ataqueBase;
-	
-	public PersonajeNeutral () {
-		
+
+	public PersonajeNeutral() {
+
 	}
-	
+
 	public int getVidaBase() {
 		return vidaBase;
 	}
@@ -53,5 +54,16 @@ public class PersonajeNeutral implements ICharacter {
 	public void setAtaqueBase(int ataqueBase) {
 		this.ataqueBase = ataqueBase;
 	}
-	
+
+	@Override
+	public String PrintIcon() {
+		return Element.PersonajeNeutral.toString();
+	}
+
+	@Override
+	public String ControlColission() {
+		return "Aqu� el flow sube al m�ximo y te curas";
+
+	}
+
 }
