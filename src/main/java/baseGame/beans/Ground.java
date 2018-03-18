@@ -5,6 +5,8 @@ import baseGame.interfaces.IElement;
 
 public class Ground implements IElement {
 
+	private boolean isColissionable;
+
 	@Override
 	public String PrintIcon() {
 		return Element.Ground.toString();
@@ -13,6 +15,14 @@ public class Ground implements IElement {
 	@Override
 	public String ControlColission() {
 		return "Puedes caminar tranquilo prro";
+	}
+
+	public Boolean IsColisionable() {
+		return isColissionable;
+	}
+
+	public Ground() {
+		isColissionable = false;
 	}
 
 }
