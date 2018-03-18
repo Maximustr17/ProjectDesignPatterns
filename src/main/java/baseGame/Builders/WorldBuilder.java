@@ -17,8 +17,8 @@ public class WorldBuilder {
 		int longOfTheMap = rawElements[0].length;
 		int hightOfTheMap = rawElements.length;
 		IElement[][] map = new IElement[rawElements.length][rawElements[0].length];
-		for (int i = 0; i < longOfTheMap; i++) {
-			for (int j = 0; j < hightOfTheMap; j++) {
+		for (int i = 0; i < hightOfTheMap; i++) {
+			for (int j = 0; j < longOfTheMap; j++) {
 				map[i][j] = BuildElement(rawElements[i][j]);
 			}
 		}
