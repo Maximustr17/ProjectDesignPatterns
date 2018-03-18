@@ -1,18 +1,19 @@
 package baseGame.beans;
 
-import baseGame.Enums.Element;
 import baseGame.interfaces.IElement;
 
-public class Wall implements IElement {
+public class Hospital implements IElement {
 
 	@Override
 	public String PrintIcon() {
-		return Element.Wall.toString();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public String ControlColission() {
-		return "no prro por aquí no se puede pasar";
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

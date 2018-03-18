@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import baseGame.Enums.Element;
 import baseGame.Helpers.FileHelper;
 import baseGame.Helpers.Serializer;
+import baseGame.beans.Ground;
+import baseGame.beans.Hospital;
 import baseGame.beans.Wall;
 import baseGame.interfaces.IElement;
 
@@ -25,9 +28,13 @@ public class WorldBuilder {
 	}
 
 	private static IElement BuildElement(String rawElement) {
-		switch (rawElement.toLowerCase()) {
-		case "x":
+		switch (Element.GetEnum(rawElement.toUpperCase())) {
+		case Wall:
 			return new Wall();
+		case Ground:
+			return new Ground();
+		case Hospital:
+			return new Hospital();
 		default:
 			return null;
 		}
