@@ -1,7 +1,5 @@
 package baseGame.Builders;
 
-import java.util.ArrayList;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 
 import baseGame.Enums.Element;

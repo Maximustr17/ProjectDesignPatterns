@@ -10,17 +10,22 @@ public enum Element {
 
 	static {
 		for (Element elemEnum : Element.values()) {
-			map.put(elemEnum.ElementNumber, elemEnum);
+			map.put(elemEnum.ElementName, elemEnum);
 		}
 	}
 
-	private String ElementNumber;
+	private String ElementName;
 
 	private Element(String pElementNumber) {
-		this.ElementNumber = pElementNumber;
+		this.ElementName = pElementNumber;
 	}
 
-	public static Element GetEnum(String pElementNumber) {
-		return map.get(pElementNumber) != null ? map.get(pElementNumber) : map.get("0");
+	public static Element GetEnum(String pElementName) {
+		return map.get(pElementName) != null ? map.get(pElementName) : map.get("0");
+	}
+
+	@Override
+	public String toString() {
+		return map.entrySet().stream().filter(s -> s.getKey().equalsIgnoreCase(ElementName)).findFirst().get().getKey();
 	}
 }
