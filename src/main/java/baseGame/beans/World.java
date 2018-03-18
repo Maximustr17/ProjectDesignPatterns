@@ -31,10 +31,10 @@ public class World implements IWorld {
 		
 		switch (direction) {
 		case DOWN:
-			y = heroPosY - 1;
+			y = heroPosY + 1;
 			break;
 		case UP:
-			y = heroPosY + 1;
+			y = heroPosY - 1;
 			break;
 		case LEFT:
 			x = heroPosX + 1;
@@ -44,12 +44,12 @@ public class World implements IWorld {
 			break;
 		}
 
-		IElement elementToGo = mapa[x][y];
+		IElement elementToGo = mapa[y][x];
 		if (elementToGo.IsColisionable())
 			elementToGo.ControlColission();
 		else {
-			mapa[x][y] = mapa[heroPosX][heroPosY];
-			mapa[heroPosX][heroPosY] = new Ground();
+			mapa[y][x] = mapa[heroPosY][heroPosX];
+			mapa[heroPosY][heroPosX] = new Ground();
 			heroPosX = x;
 			heroPosY = y;
 		}
