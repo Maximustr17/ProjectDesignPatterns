@@ -4,15 +4,15 @@ import baseGame.Builders.WorldBuilder;
 import baseGame.interfaces.IElement;
 import baseGame.interfaces.IWorld;
 
-public class World implements IWorld{
+public class World implements IWorld {
 
 	public IElement[][] mapa;
 
 	public void LoadMap(int level) {
-		WorldBuilder.BuildWorld(GetLevelPath(level));
+		mapa = WorldBuilder.BuildWorld(GetLevelPath(level));
 	}
 
 	private String GetLevelPath(int level) {
-		return "maps/"+level+".json";
+		return "maps/" + level + ".json";
 	}
 }

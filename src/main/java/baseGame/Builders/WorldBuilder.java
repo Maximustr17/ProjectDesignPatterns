@@ -21,7 +21,7 @@ public class WorldBuilder {
 				map[i][j] = BuildElement(rawElements[i][j]);
 			}
 		}
-		return null;
+		return map;
 	}
 
 	private static IElement BuildElement(String rawElement) {
