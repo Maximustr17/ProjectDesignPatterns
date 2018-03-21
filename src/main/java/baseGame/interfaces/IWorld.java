@@ -1,9 +1,9 @@
 package baseGame.interfaces;
 
-import baseGame.Enums.Direction;
+import baseGame.Enums.DirectionEnum;
 
 public interface IWorld {
 	void PrintAllMap();
 
-	boolean NewPositionOfUser(Direction direction);
-	}
+	boolean NewPositionOfUser(DirectionEnum direction);
+}

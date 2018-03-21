@@ -2,13 +2,13 @@ package baseGame.Builders;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 
-import baseGame.Enums.Element;
+import baseGame.Enums.BeanEnum;
 import baseGame.Helpers.FileHelper;
 import baseGame.Helpers.Serializer;
-import baseGame.beans.Ground;
-import baseGame.beans.Hospital;
-import baseGame.beans.PersonajeHeroe;
-import baseGame.beans.Wall;
+import baseGame.beans.GroundTerrain;
+import baseGame.beans.HeroCharacter;
+import baseGame.beans.HospitalBuilding;
+import baseGame.beans.WallTerrain;
 import baseGame.interfaces.IElement;
 
 public class WorldBuilder {
@@ -27,15 +27,15 @@ public class WorldBuilder {
 	}
 
 	private static IElement BuildElement(String rawElement) {
-		switch (Element.GetEnum(rawElement.toUpperCase())) {
-		case Wall:
-			return new Wall();
-		case Ground:
-			return new Ground();
-		case Hospital:
-			return new Hospital();
-		case PersonajePrincipal:
-			return new PersonajeHeroe();
+		switch (BeanEnum.GetEnum(rawElement.toUpperCase())) {
+		case WALL_TERRAIN:
+			return new WallTerrain();
+		case GROUND_TERRAIN:
+			return new GroundTerrain();
+		case HOSPITAL_BUILDING:
+			return new HospitalBuilding();
+		case HERO_CHARACTER:
+			return new HeroCharacter();
 		default:
 			return null;
 		}

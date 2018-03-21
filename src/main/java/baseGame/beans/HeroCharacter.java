@@ -1,21 +1,23 @@
 package baseGame.beans;
 
-import baseGame.Enums.Element;
-import baseGame.interfaces.IElement;
+import baseGame.Enums.BeanEnum;
+import baseGame.interfaces.ICharacter;
 
-public class Hospital implements IElement {
-
+public class HeroCharacter extends ICharacter {
 	private boolean isColissionable;
-	
+
 	@Override
 	public String PrintIcon() {
-		return Element.Hospital.toString();
+		return BeanEnum.HERO_CHARACTER.toString();
 	}
 
 	@Override
 	public String ControlColission() {
-		return "Aquí el flow sube al máximo y te curas";
+		return "moviendose";
+
 	}
+
+	@Override
 	public Boolean IsColisionable() {
 		return isColissionable;
 	}

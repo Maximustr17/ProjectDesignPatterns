@@ -13,6 +13,6 @@ public class Serializer {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return (T) result;
+		return result;
 	}
 }

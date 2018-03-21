@@ -1,6 +1,6 @@
 package baseGame.Biz;
 
-import baseGame.beans.World;
+import baseGame.beans.WorldOne;
 import baseGame.interfaces.IWorld;
 
 public class TheGame {
@@ -8,7 +8,7 @@ public class TheGame {
 	IWorld world;
 
 	public TheGame(int level) {
-		world = new World(level);
+		world = new WorldOne(level);
 	}
 
 }

@@ -1,21 +1,23 @@
 package baseGame.beans;
 
-import baseGame.Enums.Element;
-import baseGame.interfaces.IElement;
+import baseGame.Enums.BeanEnum;
+import baseGame.interfaces.IBuilding;
 
-public class PersonajeHeroe implements IElement{
+public class HospitalBuilding implements IBuilding {
+
 	private boolean isColissionable;
-	
+
 	@Override
 	public String PrintIcon() {
-		return Element.PersonajePrincipal.toString();
+		return BeanEnum.HOSPITAL_BUILDING.toString();
 	}
 
 	@Override
 	public String ControlColission() {
-		return "moviendose";
-
+		return "Aqu� el flow sube al m�ximo y te curas";
 	}
+
+	@Override
 	public Boolean IsColisionable() {
 		return isColissionable;
 	}

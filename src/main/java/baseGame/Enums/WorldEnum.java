@@ -3,24 +3,24 @@ package baseGame.Enums;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum Element {
-	Hospital("H"), Ground("0"), Wall("X"), PersonajeNeutral("N"), PersonajeEnemigo("E"), PersonajePrincipal("U");
+public enum WorldEnum {
+	WORLD_ONE("world_one");
 
-	private static Map<String, Element> map = new HashMap<String, Element>();
+	private static Map<String, WorldEnum> map = new HashMap<String, WorldEnum>();
 
 	static {
-		for (Element elemEnum : Element.values()) {
+		for (WorldEnum elemEnum : WorldEnum.values()) {
 			map.put(elemEnum.ElementName, elemEnum);
 		}
 	}
 
 	private String ElementName;
 
-	private Element(String pElementNumber) {
+	private WorldEnum(String pElementNumber) {
 		this.ElementName = pElementNumber;
 	}
 
-	public static Element GetEnum(String pElementName) {
+	public static WorldEnum GetEnum(String pElementName) {
 		return map.get(pElementName) != null ? map.get(pElementName) : map.get("0");
 	}
 
