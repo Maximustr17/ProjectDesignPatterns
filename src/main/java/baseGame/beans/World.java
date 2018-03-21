@@ -37,10 +37,10 @@ public class World implements IWorld {
 			y = heroPosY - 1;
 			break;
 		case LEFT:
-			x = heroPosX + 1;
+			x = heroPosX - 1;
 			break;
 		case RIGTH:
-			x = heroPosX - 1;
+			x = heroPosX + 1;
 			break;
 		}
 
