@@ -11,8 +11,8 @@ public class World implements IWorld {
 	public int heroPosX;
 	public int heroPosY;
 
-	public World(int level) {
-		mapa = WorldBuilder.BuildWorld(GetLevelPath(level));
+	public World(int level, PersonajeHeroe personajeHeroe) {
+		mapa = WorldBuilder.BuildWorld(GetLevelPath(level), personajeHeroe);
 		getPositionOfHero();
 	}
 
@@ -28,7 +28,7 @@ public class World implements IWorld {
 	public boolean NewPositionOfUser(Direction direction) {
 		int x = heroPosX;
 		int y = heroPosY;
-		
+
 		switch (direction) {
 		case DOWN:
 			y = heroPosY + 1;

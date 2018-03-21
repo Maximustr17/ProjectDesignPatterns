@@ -13,11 +13,14 @@ import baseGame.interfaces.IElement;
 
 public class WorldBuilder {
 
-	public static IElement[][] BuildWorld(String mapPath) {
+	private static PersonajeHeroe heroe;
+
+	public static IElement[][] BuildWorld(String mapPath, PersonajeHeroe personajeHeroe) {
 		String[][] rawElements = deserializeMap(LoadMap(mapPath));
 		int longOfTheMap = rawElements[0].length;
 		int hightOfTheMap = rawElements.length;
 		IElement[][] map = new IElement[rawElements.length][rawElements[0].length];
+		heroe = personajeHeroe;
 		for (int i = 0; i < hightOfTheMap; i++) {
 			for (int j = 0; j < longOfTheMap; j++) {
 				map[i][j] = BuildElement(rawElements[i][j]);
@@ -35,7 +38,7 @@ public class WorldBuilder {
 		case Hospital:
 			return new Hospital();
 		case PersonajePrincipal:
-			return new PersonajeHeroe();
+			return heroe;
 		default:
 			return null;
 		}

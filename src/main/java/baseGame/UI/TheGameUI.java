@@ -1,13 +1,16 @@
 package baseGame.UI;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import baseGame.Biz.TheGame;
+import baseGame.Enums.Direction;
 
 public class TheGameUI {
 
+	public static TheGame game;
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	static PrintStream out = System.out;
 
@@ -60,7 +63,7 @@ public class TheGameUI {
 		switch (popcion) {
 
 		case 1:
-			TheGame a = new TheGame(1);
+			MenuInicioJuego();
 			break;
 
 		case 2:
@@ -80,4 +83,36 @@ public class TheGameUI {
 		return noSalir;
 	}
 
+	private static void MenuInicioJuego() {
+		out.println("Buenas amiguito, empieza esta sorprendente aventura");
+		game = new TheGame(1, TheBeginning.MenuCrearPersonaje());
+		try {
+			Movimiento();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private static void Movimiento() throws IOException {
+		while (true) {
+			Direction direction;
+			out.println(" 1: arriba \n 2: derecha \n 3: abajo \n 4: izquierda");
+			switch (leerOpcion()) {
+			case 1:
+				direction = Direction.UP;
+				break;
+			case 2:
+				direction = Direction.RIGTH;
+				break;
+			case 3:
+				direction = Direction.DOWN;
+				break;
+			default:
+				direction = Direction.LEFT;
+				break;
+			}
+			game.MoveHero(direction);
+			game.PrintMap();
+		}
+	}
 }
