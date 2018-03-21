@@ -6,7 +6,7 @@ import baseGame.interfaces.IElement;
 public class Hospital implements IElement {
 
 	private boolean isColissionable;
-	
+
 	@Override
 	public String PrintIcon() {
 		return Element.Hospital.toString();
@@ -14,10 +14,17 @@ public class Hospital implements IElement {
 
 	@Override
 	public String ControlColission() {
-		return "Aquí el flow sube al máximo y te curas";
+		System.out.println("Aquí el flow sube al máximo y te curas");
+		setColissionable(false);
+		return null;
 	}
+
 	public Boolean IsColisionable() {
 		return isColissionable;
+	}
+
+	public Hospital() {
+		setColissionable(true);
 	}
 
 	public void setColissionable(boolean isColissionable) {
