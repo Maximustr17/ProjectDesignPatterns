@@ -3,24 +3,26 @@ package baseGame.beans;
 import baseGame.Enums.Element;
 import baseGame.interfaces.IElement;
 
-public class PersonajeHeroe implements IElement{
+public class Wall implements IElement {
+
 	private boolean isColissionable;
-	
+
 	@Override
 	public String PrintIcon() {
-		return Element.PersonajePrincipal.toString();
+		return Element.Wall.toString();
 	}
 
 	@Override
 	public String ControlColission() {
-		return "moviendose";
-
+		return "no prro por aquí no se puede pasar";
 	}
+
 	public Boolean IsColisionable() {
 		return isColissionable;
 	}
 
-	public void setColissionable(boolean isColissionable) {
-		this.isColissionable = isColissionable;
+	public Wall() {
+		isColissionable = true;
 	}
+
 }
