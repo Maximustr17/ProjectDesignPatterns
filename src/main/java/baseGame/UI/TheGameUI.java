@@ -49,7 +49,6 @@ public class TheGameUI {
 		out.println("SELECCIONE UNA OPCIÓN:");
 		opc = Integer.parseInt(in.readLine());
 		out.println();
-		Runtime.getRuntime().exec("clear");
 		return opc;
 
 	}
