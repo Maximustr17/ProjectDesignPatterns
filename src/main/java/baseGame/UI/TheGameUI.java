@@ -5,39 +5,40 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 
 import baseGame.Biz.TheGame;
+import baseGame.Helpers.GameUIHelper;
 
 public class TheGameUI {
 
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	static PrintStream out = System.out;
+	private static GameUIHelper gameUIHelper;
 
 	public static void main(String[] args) throws java.io.IOException {
 
 		int opc;
 		boolean noSalir = true;
+		initUI();
 
 		do {
-			mostrarMenu();
+			mostrarMenuPrincipal();
 			opc = leerOpcion();
-			noSalir = ejecutarAccion(opc);
-		} while (opc != 4);
+			noSalir = accionMenuPrincial(opc);
+		} while (opc != 4 || !noSalir);
 
 	}
+	
+	public static void initUI() {
+		gameUIHelper = GameUIHelper.getInstance();
+		
+	}
 
-	public static void mostrarMenu() throws java.io.IOException {
-
-		out.println();
+	public static void mostrarMenuPrincipal() throws java.io.IOException {
+		out.println(gameUIHelper.getFile("files/gameTitle.txt"));
 		out.println("MENÚ PRINCIPAL");
 		out.println();
-
-		out.println("1-Iniciar partida");
-
-		out.println("2- ");
-
-		out.println("3- ");
-
-		out.println("4-Salir del juego ");
-
+		out.println("1-JUEGO NUEVO");
+		out.println("2-CARGAR JUEGO");
+		out.println("3-SALIR DEL JUEGO");
 		out.println();
 	}
 
@@ -45,18 +46,17 @@ public class TheGameUI {
 
 		int opc;
 
-		out.println("Seleccione una opción:");
+		out.println("SELECCIONE UNA OPCIÓN:");
 		opc = Integer.parseInt(in.readLine());
 		out.println();
-
+		Runtime.getRuntime().exec("clear");
 		return opc;
 
 	}
 
-	public static boolean ejecutarAccion(int popcion) throws java.io.IOException {
+	public static boolean accionMenuPrincial(int popcion) throws java.io.IOException {
 
 		boolean noSalir = true;
-
 		switch (popcion) {
 
 		case 1:
@@ -65,16 +65,8 @@ public class TheGameUI {
 
 		case 2:
 
-			break;
-
 		case 3:
-
-			break;
-
-		case 4:
-
 			noSalir = false;
-
 			break;
 		}
 		return noSalir;
