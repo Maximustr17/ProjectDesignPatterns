@@ -12,7 +12,20 @@ import baseGame.interfaces.ITerrain;
 import baseGame.interfaces.IWorld;
 
 public class BuildingFactory extends GameFactory {
-
+	
+	private static BuildingFactory instance = null;
+	private BuildingFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static BuildingFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new BuildingFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IBuilding getBuilding(String building) {
 		IBuilding iBuilding = null;

@@ -10,7 +10,7 @@ public class GameFactoryProducer {
 		if (choice.equals(FactoryEnum.CHARACTER_FACTORY.toString())) {
 			gameFactory = new CharacterFactory();
 		} else if (choice.equals(FactoryEnum.BUILDING_FACTORY.toString())) {
-			gameFactory = new BuildingFactory();
+			gameFactory = BuildingFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.HABILITY_FACTORY.toString())) {
 			gameFactory = new HabilityFactory();
 		} else if (choice.equals(FactoryEnum.ITEM_FACTORY.toString())) {
