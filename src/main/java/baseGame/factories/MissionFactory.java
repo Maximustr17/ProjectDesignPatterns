@@ -12,6 +12,20 @@ import baseGame.interfaces.ITerrain;
 import baseGame.interfaces.IWorld;
 
 public class MissionFactory extends GameFactory {
+	
+	private static MissionFactory instance = null;
+	private MissionFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static MissionFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new MissionFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IMission getMission(String mission) {
 		IMission iMission = null;

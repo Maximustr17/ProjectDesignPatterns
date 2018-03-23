@@ -13,6 +13,19 @@ import baseGame.interfaces.ITerrain;
 import baseGame.interfaces.IWorld;
 
 public class TerrainFactory extends GameFactory {
+	
+	private static TerrainFactory instance = null;
+	private TerrainFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static TerrainFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new TerrainFactory();
+		}
+		return instance;
+	}
 
 	@Override
 	ITerrain getTerrain(String terrain) {

@@ -8,21 +8,21 @@ public class GameFactoryProducer {
 		GameFactory gameFactory = null;
 
 		if (choice.equals(FactoryEnum.CHARACTER_FACTORY.toString())) {
-			gameFactory = new CharacterFactory();
+			gameFactory = CharacterFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.BUILDING_FACTORY.toString())) {
 			gameFactory = BuildingFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.HABILITY_FACTORY.toString())) {
-			gameFactory = new HabilityFactory();
+			gameFactory = HabilityFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.ITEM_FACTORY.toString())) {
-			gameFactory = new ItemFactory();
+			gameFactory = ItemFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.RACE_FACTORY.toString())) {
-			gameFactory = new RaceFactory();
+			gameFactory = RaceFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.TERRAIN_FACTORY.toString())) {
-			gameFactory = new TerrainFactory();
+			gameFactory = TerrainFactory.getInstance();
 		} else if (choice.equals(FactoryEnum.WORLD_FACTORY.toString())) {
-			gameFactory = new WorldFactory();
+			gameFactory = WorldFactory.getInstance();
 		} else if (choice.equals(MissionEnum.MISSION_ONE.toString())) {
-			gameFactory = new MissionFactory();
+			gameFactory = MissionFactory.getInstance();
 		}
 
 		return gameFactory;

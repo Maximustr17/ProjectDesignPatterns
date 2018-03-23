@@ -13,6 +13,19 @@ import baseGame.interfaces.IWorld;
 
 public class ItemFactory extends GameFactory {
 
+	private static ItemFactory instance = null;
+	private ItemFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static ItemFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new ItemFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IItem getItem(String item) {
 		IItem iItem = null;

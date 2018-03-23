@@ -13,6 +13,19 @@ import baseGame.interfaces.IWorld;
 
 public class HabilityFactory extends GameFactory {
 
+	private static HabilityFactory instance = null;
+	private HabilityFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static HabilityFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new HabilityFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IHability getHability(String hability) {
 		IHability ihability = null;

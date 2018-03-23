@@ -15,12 +15,24 @@ import baseGame.interfaces.IWorld;
 
 public class CharacterFactory extends GameFactory {
 
+	private static CharacterFactory instance = null;
+	private CharacterFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static CharacterFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new CharacterFactory();
+		}
+		return instance;
+	}
 	@Override
 	ICharacter getCharacter(String character) {
 		ICharacter iCharacter = null;
 
 		if (character.equals(BeanEnum.HERO_CHARACTER.toString())) {
-			iCharacter = new HeroCharacter();
+			iCharacter = HeroCharacter.getInstance();
 		} else if (character.equals(BeanEnum.ENEMY_CHARACTER.toString())) {
 			iCharacter = new EnemyCharacter();
 		} else if (character.equals(BeanEnum.NEUTRAL_CHARACTER.toString())) {

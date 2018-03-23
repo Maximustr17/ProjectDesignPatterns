@@ -13,6 +13,19 @@ import baseGame.interfaces.IWorld;
 
 public class RaceFactory extends GameFactory {
 
+	private static RaceFactory instance = null;
+	private RaceFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static RaceFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new RaceFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IRace getRace(String race) {
 		IRace iRace = null;

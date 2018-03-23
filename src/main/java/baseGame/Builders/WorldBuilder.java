@@ -35,7 +35,7 @@ public class WorldBuilder {
 		case HOSPITAL_BUILDING:
 			return new HospitalBuilding();
 		case HERO_CHARACTER:
-			return new HeroCharacter();
+			return HeroCharacter.getInstance();
 		default:
 			return null;
 		}

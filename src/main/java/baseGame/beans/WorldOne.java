@@ -24,7 +24,7 @@ public class WorldOne implements IWorld {
 	private void getPositionOfHero() {
 		for (int i = 0; i < mapa.length; i++)
 			for (int j = 0; j < mapa[0].length; j++)
-				if (mapa[i][j].getClass().isInstance(new HeroCharacter())) {
+				if (mapa[i][j].getClass().isInstance(HeroCharacter.getInstance())) {
 					heroPosX = j;
 					heroPosY = i;
 				}

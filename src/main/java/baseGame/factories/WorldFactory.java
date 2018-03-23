@@ -13,6 +13,19 @@ import baseGame.interfaces.IWorld;
 
 public class WorldFactory extends GameFactory {
 
+	private static WorldFactory instance = null;
+	private WorldFactory() {
+		//Exists only to defeat instantiation.
+	}
+	
+	public static WorldFactory getInstance() {
+		
+		if(instance == null) {
+			instance = new WorldFactory();
+		}
+		return instance;
+	}
+	
 	@Override
 	IWorld getWorld(String world) {
 		IWorld iWorld = null;
