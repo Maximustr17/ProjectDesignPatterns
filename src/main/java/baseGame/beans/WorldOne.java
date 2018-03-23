@@ -45,7 +45,7 @@ public class WorldOne implements IWorld {
 		case LEFT:
 			x = heroPosX + 1;
 			break;
-		case RIGTH:
+		case RIGHT:
 			x = heroPosX - 1;
 			break;
 		}
