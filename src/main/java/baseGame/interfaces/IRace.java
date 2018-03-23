@@ -1,5 +1,5 @@
 package baseGame.interfaces;
 
-public interface IRace {
+public interface IRace extends IHability {
 
 }

@@ -1,15 +1,15 @@
 package baseGame.beans;
 
-import baseGame.Enums.Element;
-import baseGame.interfaces.IElement;
+import baseGame.Enums.BeanEnum;
+import baseGame.interfaces.ITerrain;
 
-public class Ground implements IElement {
+public class GroundTerrain implements ITerrain {
 
 	private boolean isColissionable;
 
 	@Override
 	public String PrintIcon() {
-		return Element.Ground.toString();
+		return BeanEnum.GROUND_TERRAIN.toString();
 	}
 
 	@Override
@@ -17,11 +17,12 @@ public class Ground implements IElement {
 		return "Puedes caminar tranquilo prro";
 	}
 
+	@Override
 	public Boolean IsColisionable() {
 		return isColissionable;
 	}
 
-	public Ground() {
+	public GroundTerrain() {
 		isColissionable = false;
 	}
 

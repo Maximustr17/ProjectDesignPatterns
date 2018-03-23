@@ -1,5 +1,5 @@
 package baseGame.Enums;
 
-public enum Direction {
+public enum DirectionEnum {
 	UP, DOWN, RIGTH, LEFT
 }

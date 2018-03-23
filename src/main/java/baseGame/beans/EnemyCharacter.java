@@ -1,17 +1,20 @@
 package baseGame.beans;
 
-public class PersonajeEnemigo {
-	
+import baseGame.interfaces.ICharacter;
+
+public class EnemyCharacter extends ICharacter {
+
 	private boolean estoyVivo;
 	private int nivel;
 	private int vidaBase;
 	private int vidaMaxima;
 	private int ataqueBase;
 	
-	public PersonajeEnemigo () {
-		
+
+	public EnemyCharacter() {
+
 	}
-	
+
 	public int getVidaBase() {
 		return vidaBase;
 	}
@@ -50,6 +53,24 @@ public class PersonajeEnemigo {
 
 	public void setAtaqueBase(int ataqueBase) {
 		this.ataqueBase = ataqueBase;
+	}
+
+	@Override
+	public String PrintIcon() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String ControlColission() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean IsColisionable() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

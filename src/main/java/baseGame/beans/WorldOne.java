@@ -1,17 +1,22 @@
 package baseGame.beans;
 
 import baseGame.Builders.WorldBuilder;
-import baseGame.Enums.Direction;
+import baseGame.Enums.DirectionEnum;
 import baseGame.interfaces.IElement;
 import baseGame.interfaces.IWorld;
 
-public class World implements IWorld {
+public class WorldOne implements IWorld {
 
 	public IElement[][] mapa;
 	public int heroPosX;
 	public int heroPosY;
 
-	public World(int level) {
+	// toDo se deberia de manejar una clase concreta para cada mundo
+	public WorldOne() {
+
+	}
+
+	public WorldOne(int level) {
 		mapa = WorldBuilder.BuildWorld(GetLevelPath(level));
 		getPositionOfHero();
 	}
@@ -19,16 +24,17 @@ public class World implements IWorld {
 	private void getPositionOfHero() {
 		for (int i = 0; i < mapa.length; i++)
 			for (int j = 0; j < mapa[0].length; j++)
-				if (mapa[i][j].getClass().isInstance(new PersonajeHeroe())) {
+				if (mapa[i][j].getClass().isInstance(new HeroCharacter())) {
 					heroPosX = j;
 					heroPosY = i;
 				}
 	}
 
-	public boolean NewPositionOfUser(Direction direction) {
+	@Override
+	public boolean NewPositionOfUser(DirectionEnum direction) {
 		int x = heroPosX;
 		int y = heroPosY;
-		
+
 		switch (direction) {
 		case DOWN:
 			y = heroPosY + 1;
@@ -49,13 +55,14 @@ public class World implements IWorld {
 			elementToGo.ControlColission();
 		else {
 			mapa[y][x] = mapa[heroPosY][heroPosX];
-			mapa[heroPosY][heroPosX] = new Ground();
+			mapa[heroPosY][heroPosX] = new GroundTerrain();
 			heroPosX = x;
 			heroPosY = y;
 		}
 		return true;
 	}
 
+	@Override
 	public void PrintAllMap() {
 		PrintLines();
 		System.out.println("");

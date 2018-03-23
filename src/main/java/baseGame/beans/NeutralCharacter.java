@@ -1,9 +1,9 @@
 package baseGame.beans;
 
-import baseGame.Enums.Element;
+import baseGame.Enums.BeanEnum;
 import baseGame.interfaces.ICharacter;
 
-public class PersonajeNeutral implements ICharacter {
+public class NeutralCharacter extends ICharacter {
 
 	private boolean estoyVivo;
 	private int nivel;
@@ -11,8 +11,8 @@ public class PersonajeNeutral implements ICharacter {
 	private int vidaMaxima;
 	private int ataqueBase;
 	private boolean isColissionable;
-	
-	public PersonajeNeutral() {
+
+	public NeutralCharacter() {
 
 	}
 
@@ -58,7 +58,7 @@ public class PersonajeNeutral implements ICharacter {
 
 	@Override
 	public String PrintIcon() {
-		return Element.PersonajeNeutral.toString();
+		return BeanEnum.NEUTRAL_CHARACTER.toString();
 	}
 
 	@Override
@@ -66,6 +66,8 @@ public class PersonajeNeutral implements ICharacter {
 		return "Aqu� el flow sube al m�ximo y te curas";
 
 	}
+
+	@Override
 	public Boolean IsColisionable() {
 		return isColissionable;
 	}
