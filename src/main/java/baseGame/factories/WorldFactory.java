@@ -4,6 +4,7 @@ import baseGame.Enums.WorldEnum;
 import baseGame.beans.WorldOne;
 import baseGame.interfaces.IBuilding;
 import baseGame.interfaces.ICharacter;
+import baseGame.interfaces.IGame;
 import baseGame.interfaces.IHability;
 import baseGame.interfaces.IItem;
 import baseGame.interfaces.IMission;
@@ -11,10 +12,10 @@ import baseGame.interfaces.IRace;
 import baseGame.interfaces.ITerrain;
 import baseGame.interfaces.IWorld;
 
-public class WorldFactory extends GameFactory {
+public class WorldFactory extends MainFactory {
 
 	@Override
-	IWorld getWorld(String world) {
+	public IWorld getWorld(String world) {
 		IWorld iWorld = null;
 
 		if (world.equals(WorldEnum.WORLD_ONE.toString())) {
@@ -24,43 +25,49 @@ public class WorldFactory extends GameFactory {
 	}
 
 	@Override
-	IRace getRace(String race) {
+	public ITerrain getTerrain(String terrain) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IItem getItem(String item) {
+	public IBuilding getBuilding(String building) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IBuilding getBuilding(String building) {
+	public ICharacter getCharacter(String character) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	ITerrain getTerrain(String terrain) {
+	public IItem getItem(String item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	ICharacter getCharacter(String character) {
+	public IRace getRace(String race) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IHability getHability(String hability) {
+	public IHability getHability(String hability) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IMission getMission(String mission) {
+	public IMission getMission(String mission) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IGame getGame(String game) {
 		// TODO Auto-generated method stub
 		return null;
 	}

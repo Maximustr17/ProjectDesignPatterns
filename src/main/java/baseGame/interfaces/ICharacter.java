@@ -10,5 +10,5 @@ public abstract class ICharacter implements IElement {
 	protected void setCharacterStats(ICharacterStats characterStats) {
 		this.characterStats = characterStats;
 	}
-	
+
 }

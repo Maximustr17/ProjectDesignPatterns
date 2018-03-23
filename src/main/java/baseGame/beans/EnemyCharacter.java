@@ -9,7 +9,6 @@ public class EnemyCharacter extends ICharacter {
 	private int vidaBase;
 	private int vidaMaxima;
 	private int ataqueBase;
-	
 
 	public EnemyCharacter() {
 

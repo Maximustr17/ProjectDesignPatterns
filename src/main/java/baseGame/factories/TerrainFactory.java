@@ -5,6 +5,7 @@ import baseGame.beans.GroundTerrain;
 import baseGame.beans.WallTerrain;
 import baseGame.interfaces.IBuilding;
 import baseGame.interfaces.ICharacter;
+import baseGame.interfaces.IGame;
 import baseGame.interfaces.IHability;
 import baseGame.interfaces.IItem;
 import baseGame.interfaces.IMission;
@@ -12,10 +13,10 @@ import baseGame.interfaces.IRace;
 import baseGame.interfaces.ITerrain;
 import baseGame.interfaces.IWorld;
 
-public class TerrainFactory extends GameFactory {
+public class TerrainFactory extends MainFactory {
 
 	@Override
-	ITerrain getTerrain(String terrain) {
+	public ITerrain getTerrain(String terrain) {
 		ITerrain iTerrain = null;
 
 		if (terrain.equals(BeanEnum.GROUND_TERRAIN.toString())) {
@@ -27,44 +28,51 @@ public class TerrainFactory extends GameFactory {
 	}
 
 	@Override
-	IHability getHability(String hability) {
+	public IBuilding getBuilding(String building) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IBuilding getBuilding(String building) {
+	public IWorld getWorld(String world) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IWorld getWorld(String world) {
+	public ICharacter getCharacter(String character) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	ICharacter getCharacter(String character) {
+	public IItem getItem(String item) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IItem getItem(String item) {
+	public IRace getRace(String race) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IRace getRace(String race) {
+	public IHability getHability(String hability) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	IMission getMission(String mission) {
+	public IMission getMission(String mission) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public IGame getGame(String game) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
