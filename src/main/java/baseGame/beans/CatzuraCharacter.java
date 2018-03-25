@@ -25,4 +25,11 @@ public class CatzuraCharacter extends ICharacter {
     public void setColissionable(boolean isColissionable) {
         this.isColissionable = isColissionable;
     }
+
+    @Override
+    public void setRace(String race) {
+
+
+
+    }
 }

@@ -44,6 +44,35 @@ public class WorldOne extends IWorld {
         setMap();
     }
 
+
+    @Override
+    public void updateCharacterRace(String race, MapEnum mapEnum) {
+        ICharacter iCharacter = lookForICharacter(mapEnum);
+        iCharacter.setRace(race);
+
+        updateCharacterInstanceInMap(iCharacter);
+    }
+
+    private void updateCharacterInstanceInMap(ICharacter iCharacter) {
+
+
+    }
+
+    private ICharacter lookForICharacter(MapEnum elementId) {
+        ICharacter result = null;
+        for(List<IElement> row: map){
+            for(IElement iElement : row){
+               if(iElement.printIcon().equals(elementId.toString())){
+                   result = (ICharacter) iElement;
+                   break;
+               }
+            }
+        }
+
+        return result;
+
+    }
+
     protected void setMap() {
         map = new ArrayList<>();
         List<IElement> row;

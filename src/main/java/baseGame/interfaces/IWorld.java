@@ -1,5 +1,6 @@
 package baseGame.interfaces;
 
+import baseGame.Enums.MapEnum;
 import baseGame.Helpers.SoundClipHelper;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public abstract class IWorld {
     }
 
     protected void init(){}
+
+    public abstract void updateCharacterRace(String race,MapEnum mapEnum);
 }
