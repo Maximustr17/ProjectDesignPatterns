@@ -1,6 +1,8 @@
 package baseGame.UI;
 
 import baseGame.Enums.FactoryEnum;
+import baseGame.Enums.MapEnum;
+import baseGame.Enums.RaceEnum;
 import baseGame.Helpers.GameUIHelper;
 import baseGame.Helpers.SoundClipHelper;
 import baseGame.factories.MainFactory;
@@ -86,7 +88,7 @@ public class TheGameUI {
             case "1":
                 ejecutarMenuCrearPersonaje();
                 break;
-            case "2":
+                case "2":
             case "3":
                 noSalir = false;
                 break;
@@ -98,7 +100,36 @@ public class TheGameUI {
         boolean noSalir = true;
         switch (popcion) {
             case "1":
+                ejecutarMenuSetHabilidad();
+                break;
+            case "2":
+                noSalir = false;
+                break;
+        }
+        return noSalir;
+    }
 
+    private static void ejecutarMenuSetHabilidad() throws IOException {
+        boolean noSalir;
+        do {
+            mostrarMenuCrearRaza();
+            noSalir = accionCrearMenuRaza(leerOpcion());
+        } while (noSalir);
+    }
+
+    private static void mostrarMenuCrearRaza() {
+        out.println("=======SELECT CHARACTER HABILITY=======");
+        out.println();
+        out.println("1-KAJIT");
+        out.println("3-EXIT");
+        out.println();
+    }
+
+    private static boolean accionCrearMenuRaza(String popcion) {
+        boolean noSalir = true;
+        switch (popcion) {
+            case "1":
+                game.updateCatzuraRace(RaceEnum.KAJIT_RACE.toString(), MapEnum.CATZURA_CHARACTER);
                 break;
             case "2":
                 noSalir = false;

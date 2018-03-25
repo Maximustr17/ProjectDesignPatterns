@@ -1,6 +1,5 @@
 package baseGame.factories;
 
-import baseGame.Enums.MapEnum;
 import baseGame.Enums.RaceEnum;
 import baseGame.beans.StealthRace;
 import baseGame.interfaces.*;
@@ -11,7 +10,7 @@ public class RaceFactory extends MainFactory {
     public IRace getRace(String race) {
         IRace iRace = null;
 
-        if (race.equals(RaceEnum.STEALTH_RACE.toString())) {
+        if (race.equals(RaceEnum.KAJIT_RACE.toString())) {
             iRace = new StealthRace();
         }
         return iRace;

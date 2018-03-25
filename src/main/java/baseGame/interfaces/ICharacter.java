@@ -11,4 +11,6 @@ public abstract class ICharacter implements IElement {
         this.characterStats = characterStats;
     }
 
+    public abstract void setRace(String race);
+
 }

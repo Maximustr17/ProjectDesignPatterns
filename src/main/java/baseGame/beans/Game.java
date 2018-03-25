@@ -1,11 +1,11 @@
 package baseGame.beans;
 
 import baseGame.Enums.FactoryEnum;
+import baseGame.Enums.MapEnum;
 import baseGame.Enums.WorldEnum;
 import baseGame.Helpers.SoundClipHelper;
 import baseGame.factories.MainFactory;
 import baseGame.factories.MainFactoryProducer;
-import baseGame.interfaces.IElement;
 import baseGame.interfaces.IGame;
 import baseGame.interfaces.IWorld;
 
@@ -32,9 +32,9 @@ public class Game extends IGame {
 
     @Override
    protected void init() {
+        worldFactory = MainFactoryProducer.getFactory(FactoryEnum.WORLD_FACTORY.toString());
         worlds = new ArrayList<>();
-        createWorld();
-
+        setWorlds(WorldEnum.WORLD_ONE);
     }
 
     @Override
@@ -45,17 +45,16 @@ public class Game extends IGame {
     }
 
     @Override
-    protected void createWorld() {
-        worldFactory = MainFactoryProducer.getFactory(FactoryEnum.WORLD_FACTORY.toString());
-        setWorlds();
-    }
-
-    @Override
     public List<IWorld> getWorls() {
         return worlds;
     }
 
-    private void setWorlds() {
-        worlds.add(worldFactory.getWorld(WorldEnum.WORLD_ONE.toString()));
+    @Override
+    public void updateCatzuraRace(String race, MapEnum mapEnum) {
+        worlds.get(0).updateCharacterRace(race, mapEnum);
+    }
+
+    private void setWorlds(WorldEnum world) {
+        worlds.add(worldFactory.getWorld(world.toString()));
     }
 }

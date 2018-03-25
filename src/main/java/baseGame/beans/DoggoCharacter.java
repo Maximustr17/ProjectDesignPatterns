@@ -72,4 +72,8 @@ public class DoggoCharacter extends ICharacter {
         return null;
     }
 
+    @Override
+    public void setRace(String race) {
+
+    }
 }
