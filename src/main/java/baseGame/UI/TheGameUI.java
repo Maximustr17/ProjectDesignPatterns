@@ -10,6 +10,7 @@ import baseGame.interfaces.IGame;
 import baseGame.interfaces.IWorld;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.List;
@@ -24,13 +25,26 @@ public class TheGameUI {
     private static MainFactory gameFactory;
 
     public static void main(String[] args) throws java.io.IOException {
-        boolean noSalir;
+
 
         initUI();
 
+        ejecutarMenuPrincipal();
+    }
+
+    private static void ejecutarMenuPrincipal() throws IOException {
+        boolean noSalir;
         do {
             mostrarMenuPrincipal();
             noSalir = accionMenuPrincial(leerOpcion());
+        } while (noSalir);
+    }
+
+    private static void ejecutarMenuCrearPersonaje() throws IOException {
+        boolean noSalir;
+        do {
+            mostrarMenuPersonaje();
+            noSalir = accionMenuCrearPersonaje(leerOpcion());
         } while (noSalir);
     }
 
@@ -48,7 +62,15 @@ public class TheGameUI {
         out.println();
         out.println("1-NEW GAME");
         out.println("2-LOAD GAME");
-        out.println("3-");
+        out.println("3-EXIT");
+        out.println();
+    }
+
+    private static void mostrarMenuPersonaje() {
+        out.println("=======CREATE CHARACTER=======");
+        out.println();
+        out.println("1-CREATE CHARACTER");
+        out.println("3-EXIT");
         out.println();
     }
 
@@ -58,15 +80,27 @@ public class TheGameUI {
         return in.readLine();
     }
 
-    private static boolean accionMenuPrincial(String popcion) {
+    private static boolean accionMenuPrincial(String popcion) throws IOException {
         boolean noSalir = true;
         switch (popcion) {
             case "1":
-                printWorldMap();
-                
+                ejecutarMenuCrearPersonaje();
                 break;
             case "2":
             case "3":
+                noSalir = false;
+                break;
+        }
+        return noSalir;
+    }
+
+    private static boolean accionMenuCrearPersonaje(String popcion) throws IOException {
+        boolean noSalir = true;
+        switch (popcion) {
+            case "1":
+
+                break;
+            case "2":
                 noSalir = false;
                 break;
         }
