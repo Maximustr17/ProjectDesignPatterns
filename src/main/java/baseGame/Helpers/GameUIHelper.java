@@ -5,40 +5,42 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class GameUIHelper {
-	
-	 private static GameUIHelper instance = null;
-	   private GameUIHelper() {
-	      // Exists only to defeat instantiation.
-	   }
-	   public static GameUIHelper getInstance() {
-	      if(instance == null) {
-	         instance = new GameUIHelper();
-	      }
-	      return instance;
-	   }
 
-	public String getFile(String fileName) {
+    private static GameUIHelper instance = null;
 
-		StringBuilder result = new StringBuilder("");
+    private GameUIHelper() {
+        // Exists only to defeat instantiation.
+    }
 
-		//Get file from resources folder
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource(fileName).getFile());
+    public static GameUIHelper getInstance() {
+        if (instance == null) {
+            instance = new GameUIHelper();
+        }
+        return instance;
+    }
 
-		try (Scanner scanner = new Scanner(file)) {
+    public String getFile(String fileName) {
 
-			while (scanner.hasNextLine()) {
-				String line = scanner.nextLine();
-				result.append(line).append("\n");
-			}
+        StringBuilder result = new StringBuilder("");
 
-			scanner.close();
+        // Get file from resources folder
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource(fileName).getFile());
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-			
-		return result.toString();
+        try (Scanner scanner = new Scanner(file)) {
 
-	  }
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                result.append(line).append("\n");
+            }
+
+            scanner.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result.toString();
+
+    }
 }

@@ -1,29 +1,29 @@
 package baseGame.beans;
 
-import baseGame.Enums.BeanEnum;
+import baseGame.Enums.MapEnum;
 import baseGame.interfaces.ITerrain;
 
 public class WallTerrain implements ITerrain {
 
-	private boolean isColissionable;
+    private boolean isColissionable;
 
-	@Override
-	public String PrintIcon() {
-		return BeanEnum.WALL_TERRAIN.toString();
-	}
+    public WallTerrain() {
+        isColissionable = true;
+    }
 
-	@Override
-	public String ControlColission() {
-		return "no prro por aqu� no se puede pasar";
-	}
+    @Override
+    public String printIcon() {
+        return MapEnum.WALL_TERRAIN.toString();
+    }
 
-	@Override
-	public Boolean IsColisionable() {
-		return isColissionable;
-	}
+    @Override
+    public String ControlColission() {
+        return "no prro por aqu� no se puede pasar";
+    }
 
-	public WallTerrain() {
-		isColissionable = true;
-	}
+    @Override
+    public Boolean IsColisionable() {
+        return isColissionable;
+    }
 
 }

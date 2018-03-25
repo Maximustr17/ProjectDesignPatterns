@@ -1,29 +1,29 @@
 package baseGame.beans;
 
-import baseGame.Enums.BeanEnum;
+import baseGame.Enums.MapEnum;
 import baseGame.interfaces.ITerrain;
 
 public class GroundTerrain implements ITerrain {
 
-	private boolean isColissionable;
+    private boolean isColissionable;
 
-	@Override
-	public String PrintIcon() {
-		return BeanEnum.GROUND_TERRAIN.toString();
-	}
+    public GroundTerrain() {
+        isColissionable = false;
+    }
 
-	@Override
-	public String ControlColission() {
-		return "Puedes caminar tranquilo prro";
-	}
+    @Override
+    public String printIcon() {
+        return MapEnum.GROUND_TERRAIN.toString();
+    }
 
-	@Override
-	public Boolean IsColisionable() {
-		return isColissionable;
-	}
+    @Override
+    public String ControlColission() {
+        return "Puedes caminar tranquilo prro";
+    }
 
-	public GroundTerrain() {
-		isColissionable = false;
-	}
+    @Override
+    public Boolean IsColisionable() {
+        return isColissionable;
+    }
 
 }
