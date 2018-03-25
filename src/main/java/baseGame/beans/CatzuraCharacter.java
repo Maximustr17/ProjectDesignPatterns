@@ -1,24 +1,20 @@
 package baseGame.beans;
 
 import baseGame.Enums.MapEnum;
-import baseGame.interfaces.ITerrain;
+import baseGame.interfaces.ICharacter;
 
-public class GroundTerrain implements ITerrain {
-
+public class CatzuraCharacter extends ICharacter {
     private boolean isColissionable;
-
-    public GroundTerrain() {
-        isColissionable = false;
-    }
 
     @Override
     public String printIcon() {
-        return MapEnum.GROUND_TERRAIN.toString();
+        return MapEnum.CATZURA_CHARACTER.toString();
     }
 
     @Override
     public String ControlColission() {
-        return "Puedes caminar tranquilo prro";
+        return "moviendose";
+
     }
 
     @Override
@@ -26,4 +22,7 @@ public class GroundTerrain implements ITerrain {
         return isColissionable;
     }
 
+    public void setColissionable(boolean isColissionable) {
+        this.isColissionable = isColissionable;
+    }
 }

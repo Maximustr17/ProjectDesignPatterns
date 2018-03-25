@@ -1,9 +1,21 @@
 package baseGame.interfaces;
 
-import baseGame.Enums.DirectionEnum;
+import baseGame.Helpers.SoundClipHelper;
 
-public interface IWorld {
-	void PrintAllMap();
+import java.util.List;
 
-	boolean NewPositionOfUser(DirectionEnum direction);
+public abstract class IWorld {
+    protected void setMap(){}
+
+    public List<List<IElement>> getMap(){
+        return null;
+    }
+
+    protected void startWorldSoundClip(String soundClipURL) {
+        SoundClipHelper soundClipHelper = SoundClipHelper.getInstance();
+        soundClipHelper.stopSound();
+        soundClipHelper.playSound(soundClipURL);
+    }
+
+    protected void init(){}
 }

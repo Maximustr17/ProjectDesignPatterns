@@ -2,10 +2,10 @@ package baseGame.interfaces;
 
 public interface IElement {
 
-	public String PrintIcon();
+    String printIcon();
 
-	public String ControlColission();
+    String ControlColission();
 
-	public Boolean IsColisionable();
+    Boolean IsColisionable();
 
 }

@@ -1,79 +1,93 @@
 package baseGame.UI;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-
-import baseGame.Enums.BeanEnum;
 import baseGame.Enums.FactoryEnum;
-import baseGame.Enums.WorldEnum;
 import baseGame.Helpers.GameUIHelper;
 import baseGame.Helpers.SoundClipHelper;
 import baseGame.factories.MainFactory;
 import baseGame.factories.MainFactoryProducer;
+import baseGame.interfaces.IElement;
 import baseGame.interfaces.IGame;
+import baseGame.interfaces.IWorld;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.List;
 
 public class TheGameUI {
 
-	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-	static PrintStream out = System.out;
-	static GameUIHelper gameUIHelper;
-    static SoundClipHelper soundClipHelper;
-	static IGame game;
-	static MainFactory gameFactory;
+    private static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    private static PrintStream out = System.out;
+    private static GameUIHelper gameUIHelper;
+    private static SoundClipHelper soundClipHelper;
+    private static IGame game;
+    private static MainFactory gameFactory;
 
-	public static void main(String[] args) throws java.io.IOException {
-		int opc;
-		boolean noSalir = true;
+    public static void main(String[] args) throws java.io.IOException {
+        boolean noSalir;
 
-		initUI();
+        initUI();
 
-		do {
-			mostrarMenuPrincipal();
-			opc = leerOpcion();
-			noSalir = accionMenuPrincial(opc);
-		} while (opc != 4 || noSalir);
-	}
+        do {
+            mostrarMenuPrincipal();
+            noSalir = accionMenuPrincial(leerOpcion());
+        } while (noSalir);
+    }
 
-	public static void initUI() {
-		gameUIHelper = GameUIHelper.getInstance();
-		soundClipHelper = SoundClipHelper.getInstance();
-		out.println(gameUIHelper.getFile("files/gameTitle.txt"));
-		soundClipHelper.playSound("soundClips/PowerBotsLoop.wav");
-		gameFactory = MainFactoryProducer.getFactory(FactoryEnum.GAME_FACTORY.toString());
-		game = gameFactory.getGame(FactoryEnum.GAME_FACTORY.toString());
-	}
+    private static void initUI() {
+        gameUIHelper = GameUIHelper.getInstance();
+        soundClipHelper = SoundClipHelper.getInstance();
+        out.println(gameUIHelper.getFile("files/gameTitle.txt"));
+        soundClipHelper.playSound("soundClips/PowerBotsLoop.wav");
+        gameFactory = MainFactoryProducer.getFactory(FactoryEnum.GAME_FACTORY.toString());
+        game = gameFactory.getGame(FactoryEnum.GAME_FACTORY.toString());
+    }
 
-	public static void mostrarMenuPrincipal() throws java.io.IOException {
-		out.println("MENÚ PRINCIPAL");
-		out.println();
-		out.println("1-JUEGO NUEVO");
-		out.println("2-CARGAR JUEGO");
-		out.println("3-SALIR DEL JUEGO");
-		out.println();
-	}
+    private static void mostrarMenuPrincipal() {
+        out.println("=======MAIN MENU=======");
+        out.println();
+        out.println("1-NEW GAME");
+        out.println("2-LOAD GAME");
+        out.println("3-");
+        out.println();
+    }
 
-	public static int leerOpcion() throws java.io.IOException {
-		int opc;
+    private static String leerOpcion() throws java.io.IOException {
+        out.println("SELECCIONE UNA OPCIÓN:");
+        out.println();
+        return in.readLine();
+    }
 
-		out.println("SELECCIONE UNA OPCIÓN:");
-		opc = Integer.parseInt(in.readLine());
-		out.println();
-		return opc;
-	}
+    private static boolean accionMenuPrincial(String popcion) {
+        boolean noSalir = true;
+        switch (popcion) {
+            case "1":
+                printWorldMap();
+                
+                break;
+            case "2":
+            case "3":
+                noSalir = false;
+                break;
+        }
+        return noSalir;
+    }
 
-	public static boolean accionMenuPrincial(int popcion) throws java.io.IOException {
-		boolean noSalir = true;
-		switch (popcion) {
-		case 1:
-			
-			game.init(WorldEnum.WORLD_ONE.toString());
-			break;
-		case 2:
-		case 3:
-			noSalir = false;
-			break;
-		}
-		return noSalir;
-	}
+    private static void printWorldMap(){
+        IWorld iWorld = game.getWorls().get(0);
+        List<List<IElement>> map = iWorld.getMap();
+        for(List<IElement> row : map){
+            for(IElement iElement : row){
+                if (iElement.printIcon().equals("  ") || iElement.printIcon().equals("||")) {
+                    System.out.print(iElement.printIcon());
+                }else{
+                    System.out.print(iElement.printIcon()+" ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("C = Catzura, N = Neo,  D = Doggos, H = Health potion");
+        System.out.println();
+    }
 }

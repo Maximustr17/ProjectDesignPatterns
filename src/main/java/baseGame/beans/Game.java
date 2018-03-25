@@ -1,37 +1,61 @@
 package baseGame.beans;
 
-import java.util.List;
-
+import baseGame.Enums.FactoryEnum;
+import baseGame.Enums.WorldEnum;
 import baseGame.Helpers.SoundClipHelper;
+import baseGame.factories.MainFactory;
+import baseGame.factories.MainFactoryProducer;
+import baseGame.interfaces.IElement;
 import baseGame.interfaces.IGame;
 import baseGame.interfaces.IWorld;
 
-public class Game implements IGame {
-	private SoundClipHelper soundClipHelper;
-	static Game instance;
-	private List<IWorld> worlds;
+import java.util.ArrayList;
+import java.util.List;
 
-	private Game() {
-		// Exists only to defeat instantiation.
-	}
+public class Game extends IGame {
+    static Game instance;
 
-	public static Game getInstance() {
-		if (instance == null) {
-			instance = new Game();
-		}
-		return instance;
-	}
+    private MainFactory worldFactory;
+    private List<IWorld> worlds;
 
-	@Override
-	public void init(String worldLevel) {
-		soundClipHelper = SoundClipHelper.getInstance();
-		soundClipHelper.stopSound();
-		soundClipHelper.playSound("soundClips/Castle-8-Bit-Stein.wav");
-	}
+    private Game() {
+        // Exists only to defeat instantiation.
+    }
 
-	@Override
-	public void createWorld(String worldLevel) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static Game getInstance() {
+        if (instance == null) {
+            instance = new Game();
+            instance.init();
+        }
+        return instance;
+    }
+
+    @Override
+   protected void init() {
+        worlds = new ArrayList<>();
+        createWorld();
+
+    }
+
+    @Override
+    protected void startWorldSoundClip(String soundClipURL) {
+            SoundClipHelper soundClipHelper = SoundClipHelper.getInstance();
+            soundClipHelper.stopSound();
+            soundClipHelper.playSound(soundClipURL);
+    }
+
+    @Override
+    protected void createWorld() {
+        worldFactory = MainFactoryProducer.getFactory(FactoryEnum.WORLD_FACTORY.toString());
+        setWorlds();
+    }
+
+    @Override
+    public List<IWorld> getWorls() {
+        return worlds;
+    }
+
+    private void setWorlds() {
+        worlds.add(worldFactory.getWorld(WorldEnum.WORLD_ONE.toString()));
+    }
 }

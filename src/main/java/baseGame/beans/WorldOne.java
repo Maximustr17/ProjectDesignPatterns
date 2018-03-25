@@ -1,87 +1,97 @@
 package baseGame.beans;
 
-import baseGame.Builders.WorldBuilder;
-import baseGame.Enums.DirectionEnum;
-import baseGame.interfaces.IElement;
-import baseGame.interfaces.IWorld;
+import baseGame.Enums.MapEnum;
+import baseGame.Enums.FactoryEnum;
+import baseGame.factories.MainFactory;
+import baseGame.factories.MainFactoryProducer;
+import baseGame.interfaces.*;
 
-public class WorldOne implements IWorld {
+import java.io.BufferedReader;
 
-	public IElement[][] mapa;
-	public int heroPosX;
-	public int heroPosY;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
-	// toDo se deberia de manejar una clase concreta para cada mundo
-	public WorldOne() {
+import static baseGame.Enums.MapEnum.WALL_TERRAIN;
 
-	}
+public class WorldOne extends IWorld {
+    static WorldOne instance;
+    private MainFactory terrainFactory;
+    private MainFactory itemFactory;
+    private MainFactory buildingFactory;
+    private MainFactory characterFactory;
+    private List<List<IElement>> map;
+    private List<IMission> missions;
 
-	public WorldOne(int level) {
-		mapa = WorldBuilder.BuildWorld(GetLevelPath(level));
-		getPositionOfHero();
-	}
+    private WorldOne() {
+    }
 
-	private void getPositionOfHero() {
-		for (int i = 0; i < mapa.length; i++)
-			for (int j = 0; j < mapa[0].length; j++)
-				if (mapa[i][j].getClass().isInstance(new HeroCharacter())) {
-					heroPosX = j;
-					heroPosY = i;
-				}
-	}
+    public static WorldOne getInstance() {
+        if (instance == null) {
+            instance = new WorldOne();
+            instance.init();
+        }
+        return instance;
+    }
 
-	@Override
-	public boolean NewPositionOfUser(DirectionEnum direction) {
-		int x = heroPosX;
-		int y = heroPosY;
+    protected void init() {
+        terrainFactory = MainFactoryProducer.getFactory(FactoryEnum.TERRAIN_FACTORY.toString());
+        itemFactory = MainFactoryProducer.getFactory(FactoryEnum.ITEM_FACTORY.toString());
+        buildingFactory = MainFactoryProducer.getFactory(FactoryEnum.BUILDING_FACTORY.toString());
+        characterFactory = MainFactoryProducer.getFactory(FactoryEnum.CHARACTER_FACTORY.toString());
+        setMap();
+    }
 
-		switch (direction) {
-		case DOWN:
-			y = heroPosY + 1;
-			break;
-		case UP:
-			y = heroPosY - 1;
-			break;
-		case LEFT:
-			x = heroPosX + 1;
-			break;
-		case RIGTH:
-			x = heroPosX - 1;
-			break;
-		}
+    protected void setMap() {
+        map = new ArrayList<>();
+        List<IElement> row;
+        String rowElements[];
 
-		IElement elementToGo = mapa[y][x];
-		if (elementToGo.IsColisionable())
-			elementToGo.ControlColission();
-		else {
-			mapa[y][x] = mapa[heroPosY][heroPosX];
-			mapa[heroPosY][heroPosX] = new GroundTerrain();
-			heroPosX = x;
-			heroPosY = y;
-		}
-		return true;
-	}
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("maps/map1.txt");
 
-	@Override
-	public void PrintAllMap() {
-		PrintLines();
-		System.out.println("");
-		for (int i = 0; i < mapa.length; i++) {
-			System.out.print("| ");
-			for (int j = 0; j < mapa[0].length; j++)
-				System.out.print(mapa[i][j].PrintIcon() + " | ");
-			System.out.println("");
-			PrintLines();
-			System.out.println("");
-		}
-	}
+        try (BufferedReader br
+                     = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                if(line.isEmpty()) {
+                    continue;
+                }
+                row = new ArrayList<>();
+                rowElements = line.trim().split(",");
+                for (String value : rowElements) {
+                    switch (MapEnum.GetEnum(value)) {
+                        case WALL_TERRAIN:
+                            row.add(terrainFactory.getTerrain(WALL_TERRAIN.toString()));
+                            break;
+                        case GROUND_TERRAIN:
+                            row.add(terrainFactory.getTerrain(MapEnum.GROUND_TERRAIN.toString()));
+                            break;
+                        case CATZURA_CHARACTER:
+                            row.add(characterFactory.getCharacter(MapEnum.CATZURA_CHARACTER.toString()));
+                            break;
+                        case DOGGO_CHARACTER:
+                            row.add(characterFactory.getCharacter(MapEnum.DOGGO_CHARACTER.toString()));
+                            break;
+                        case NEO_CHARACTER:
+                            row.add(characterFactory.getCharacter(MapEnum.NEO_CHARACTER.toString()));
+                            break;
+                        case MERCHANT_BUILDING:
+                            row.add(buildingFactory.getBuilding(MapEnum.MERCHANT_BUILDING.toString()));
+                        case HEALTH_ITEM:
+                            row.add(itemFactory.getItem(MapEnum.HEALTH_ITEM.toString()));
+                    }
+                }
+                map.add(row);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
-	private void PrintLines() {
-		for (int x = 0; x < mapa[0].length; x++)
-			System.out.print("----");
-	}
-
-	private String GetLevelPath(int level) {
-		return "maps/" + level + ".json";
-	}
+    public List<List<IElement>> getMap() {
+        return map;
+    }
 }
